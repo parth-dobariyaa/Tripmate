@@ -1,0 +1,13 @@
+{
+  "name": "tripmate",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Trip money manager and photo studio MVP",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

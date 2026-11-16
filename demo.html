@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TripMate shared trip money manager and photo studio">
+  <title>TripMate — Spend less time settling up</title>
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" data-view="overview"><span class="brand-mark">✦</span><span>trip<span>mate</span></span></a>
+      <div class="trip-switcher"><small>ACTIVE TRIP</small><strong>Goa escape <span>⌄</span></strong><em>Jan 18 — Jan 22, 2025</em></div>
+      <nav aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><span>◈</span> Overview</button>
+        <button class="nav-item" data-view="expenses"><span>↗</span> Expenses <b id="expenseBadge">0</b></button>
+        <button class="nav-item" data-view="wallet"><span>▣</span> Wallet</button>
+        <button class="nav-item" data-view="settlements"><span>⇄</span> Settle up</button>
+        <button class="nav-item" data-view="memories"><span>▧</span> Memories</button>
+        <button class="nav-item" data-view="studio"><span>✧</span> Photo studio</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-view="reports"><span>▤</span> Reports</button>
+        <div class="profile"><div class="avatar coral">AR</div><div><strong>Arjun Rao</strong><small>Treasure keeper</small></div><span>•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><button class="mobile-menu" id="menuButton">☰</button><div class="crumb">TRIP / <strong id="viewCrumb">OVERVIEW</strong></div><div class="top-actions"><button class="icon-button">?</button><button class="icon-button">♧</button><div class="avatar coral">AR</div></div></header>
+
+      <section class="view active" id="overview">
+        <div class="welcome"><div><p class="eyebrow">WEDNESDAY, JANUARY 22</p><h1>Good morning, Arjun <span>✦</span></h1><p class="muted">Your Goa escape is looking beautifully balanced.</p></div><button class="primary" data-action="expense">＋ Add expense</button></div>
+        <div class="stats-grid">
+          <article class="stat-card dark"><div class="stat-label">TOTAL SPEND <span>↗</span></div><strong id="totalSpend">₹0</strong><p><span class="trend">↗ 12.4%</span> vs. last trip</p><div class="sparkline"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="stat-card"><div class="stat-label">WALLET BALANCE <span>▣</span></div><strong id="walletBalance">₹0</strong><p>Cash currently with you</p><div class="progress"><span id="walletProgress"></span></div><small id="walletMeta">of ₹0 contributed</small></article>
+          <article class="stat-card"><div class="stat-label">YOUR BALANCE <span>◎</span></div><strong class="positive" id="yourBalance">₹0</strong><p id="balanceMessage">You're all settled up</p><a href="#" data-view="settlements">View breakdown →</a></article>
+        </div>
+        <div class="content-grid"><article class="panel activity-panel"><div class="panel-heading"><div><h2>Recent activity</h2><p>Everything that happened on this trip</p></div><button class="text-button" data-view="expenses">View all →</button></div><div id="activityList" class="activity-list"></div></article><article class="panel members-panel"><div class="panel-heading"><div><h2>Trip members</h2><p>4 friends on this adventure</p></div><button class="more">•••</button></div><div id="memberList"></div><div class="invite-box">＋ <span><strong>Invite a friend</strong><small>There’s room for one more</small></span></div></article></div>
+      </section>
+
+      <section class="view" id="expenses"><div class="page-title"><div><p class="eyebrow">MONEY MANAGER</p><h1>Expenses</h1><p class="muted">Keep every rupee transparent and fair.</p></div><button class="primary" data-action="expense">＋ Add expense</button></div><div class="panel table-panel"><div class="toolbar"><div class="tabs"><button class="tab active">All expenses</button><button class="tab">By category</button></div><button class="secondary" id="exportCsv">↓ Export CSV</button></div><div class="expense-table"><div class="table-head"><span>DESCRIPTION</span><span>PAID BY</span><span>CATEGORY</span><span>DATE</span><span>AMOUNT</span></div><div id="expenseRows"></div></div></div></section>
+
+      <section class="view" id="wallet"><div class="page-title"><div><p class="eyebrow">SHARED MONEY</p><h1>Wallet</h1><p class="muted">A clear record of what entered and left the common fund.</p></div><button class="primary" data-action="contribution">＋ Record money</button></div><div class="wallet-hero"><div><p>RECORDED WALLET BALANCE</p><strong id="walletHeroBalance">₹0</strong><small>Not bank-verified · based on entries in TripMate</small></div><div class="wallet-ring"><span id="walletPercent">0%</span><small>used</small></div></div><div class="panel table-panel"><div class="panel-heading"><div><h2>Wallet ledger</h2><p>Contributions, transfers and common expenses</p></div></div><div id="walletRows"></div></div></section>
+
+      <section class="view" id="settlements"><div class="page-title"><div><p class="eyebrow">BALANCES</p><h1>Settle up</h1><p class="muted">Suggested repayments based on recorded shared expenses.</p></div></div><div class="settle-grid"><div class="panel"><div class="panel-heading"><div><h2>Member balances</h2><p>Positive means they should receive money.</p></div></div><div id="balanceRows"></div></div><div class="panel suggestion"><div class="panel-heading"><div><h2>Suggested settlement</h2><p>The simplest way to square up.</p></div></div><div id="suggestionRows"></div></div></div></section>
+
+      <section class="view" id="memories"><div class="page-title"><div><p class="eyebrow">TRIP MEMORIES</p><h1>Memories</h1><p class="muted">The good stuff, all in one place.</p></div><button class="primary" data-view="studio">＋ Add memory</button></div><div id="gallery" class="gallery"></div></section>
+
+      <section class="view" id="studio"><div class="page-title"><div><p class="eyebrow">CREATIVE CORNER</p><h1>Photo studio</h1><p class="muted">Make your favourite moments feel even more like you.</p></div><button class="secondary" id="resetPhoto">Reset edits</button></div><div class="studio-layout"><div class="canvas-wrap"><canvas id="photoCanvas" width="900" height="600"></canvas><div class="empty-canvas" id="canvasEmpty"><span>✧</span><strong>Drop a photo here</strong><small>or choose a file to start editing</small><label class="upload-button">Choose photo<input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp"></label></div></div><div class="editor-controls"><label class="upload-row upload-button">＋ Upload photo<input type="file" id="photoInputAlt" accept="image/jpeg,image/png,image/webp"></label><div class="control-section"><h3>Presets</h3><div class="preset-grid" id="presets"></div></div><div class="control-section"><h3>Adjustments</h3><div id="sliders"></div></div><div class="control-section actions"><button class="secondary" id="rotatePhoto">↻ Rotate</button><button class="primary" id="downloadPhoto">↓ Save to device</button></div></div></div></section>
+
+      <section class="view" id="reports"><div class="page-title"><div><p class="eyebrow">TRIP INSIGHTS</p><h1>Reports</h1><p class="muted">Understand where the trip money went.</p></div><button class="secondary" id="exportCsv2">↓ Download CSV</button></div><div class="report-cards"><div class="report-number"><span>ALL EXPENSES</span><strong id="reportTotal">₹0</strong></div><div class="report-number"><span>AVERAGE / PERSON</span><strong id="reportAverage">₹0</strong></div><div class="report-number"><span>LARGEST CATEGORY</span><strong id="largestCategory">—</strong></div></div><div class="panel"><div class="panel-heading"><div><h2>Spend by category</h2><p>Where the shared budget went</p></div></div><div id="categoryBars"></div></div></section>
+    </main>
+  </div>
+  <dialog id="expenseDialog"><form method="dialog" id="expenseForm"><div class="modal-heading"><div><p class="eyebrow">NEW RECORD</p><h2>Add expense</h2></div><button class="close">×</button></div><label>Description<input name="description" required placeholder="e.g. Sunset dinner"></label><div class="form-grid"><label>Amount (₹)<input name="amount" type="number" min="1" step="0.01" required placeholder="0.00"></label><label>Paid by<select name="paidBy"><option>Arjun</option><option>Meera</option><option>Rohan</option><option>Diya</option></select></label></div><div class="form-grid"><label>Category<select name="category"><option>Food</option><option>Transport</option><option>Stay</option><option>Activities</option><option>Shopping</option><option>Other</option></select></label><label>Date<input name="date" type="date" required></label></div><label>Notes (optional)<textarea name="notes" rows="2" placeholder="Anything worth remembering?"></textarea><button class="primary full" value="default">Save expense</button></form></dialog>
+  <dialog id="moneyDialog"><form method="dialog" id="moneyForm"><div class="modal-heading"><div><p class="eyebrow">WALLET</p><h2>Record money</h2></div><button class="close">×</button></div><label>Type<select name="type"><option value="contribution">Contribution received</option><option value="transfer">Transfer to friend</option></select></label><label>Amount (₹)<input name="amount" type="number" min="1" step="0.01" required></label><label>From / recipient<select name="member"><option>Meera</option><option>Rohan</option><option>Diya</option><option>Arjun</option></select></label><label>Note<input name="note" placeholder="Optional note"></label><button class="primary full" value="default">Save record</button></form></dialog>
+  <script type="module" src="demo.js"></script>
+</body>
+</html>
