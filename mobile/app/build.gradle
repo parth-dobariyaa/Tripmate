@@ -1,0 +1,19 @@
+plugins {
+    id "com.android.application"
+}
+
+def backendUrl = project.findProperty("tripmateBackendUrl") ?: "http://172.16.3.127:3000/"
+
+android {
+    namespace "com.tripmate.app"
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.tripmate.app"
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+        buildConfigField "String", "BACKEND_URL", "\"${backendUrl}\""
+    }
+}
